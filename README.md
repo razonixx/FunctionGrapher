@@ -5,7 +5,7 @@ Graph equations in 3D using ThreeJS
 
 - npm install
 
-- Serve the folder
+- Serve the folder with an http server
 
 # If you need a http server
 
