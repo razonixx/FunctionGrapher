@@ -11,4 +11,4 @@ Graph equations in 3D using ThreeJS
 
 - npm install -g http-server
 
-- http-server . -p <port>
+- http-server . -p "port"
