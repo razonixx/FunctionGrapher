@@ -156,16 +156,16 @@ function main()
     gui_zText = gui.add( parameters, 'zFuncTextParam' ).name('f(x,y) = ');
     gui_zText.onChange( function(value) { zFuncText = gui_zText.getValue(); /*console.log(zFuncText);*/} );
     
-    gui_xMin = gui.add( parameters, 'xMinParam' ).min(-30).max(30).step(1).name('x Min');
+    gui_xMin = gui.add( parameters, 'xMinParam' ).min(-60).max(0).step(1).name('x Min');
     gui_xMin.onChange( function(value) { xMin = gui_xMin.getValue(); prepareGraph();} );
     
-    gui_yMin = gui.add( parameters, 'yMinParam' ).min(-30).max(30).step(1).name('y Min = ');
+    gui_yMin = gui.add( parameters, 'yMinParam' ).min(-60).max(0).step(1).name('y Min = ');
     gui_yMin.onChange( function(value) { yMin = gui_yMin.getValue(); prepareGraph();} );
     
-    gui_xMax = gui.add( parameters, 'xMaxParam' ).min(-30).max(30).step(1).name('x Max = ');
+    gui_xMax = gui.add( parameters, 'xMaxParam' ).min(0).max(60).step(1).name('x Max = ');
     gui_xMax.onChange( function(value) { xMax = gui_xMax.getValue(); prepareGraph();} );
     
-    gui_yMax = gui.add( parameters, 'yMaxParam' ).min(-30).max(30).step(1).name('y Max = ');
+    gui_yMax = gui.add( parameters, 'yMaxParam' ).min(0).max(60).step(1).name('y Max = ');
     gui_yMax.onChange( function(value) { yMax = gui_yMax.getValue(); prepareGraph();} );
     
     gui_segments = gui.add( parameters, 'quality' ).min(5).max(60).step(1).name('Quality = ');
@@ -188,13 +188,13 @@ function main()
 
 function focus()
 {
-    views[0].eye = [0, -(xRange>yRange?xRange:yRange), 0];
+    views[0].eye = [0, -(xRange>yRange?xRange:yRange) - 10, 0];
     views[0].camera.position.fromArray( views[0].eye );
 
-    views[1].eye = [0, 0, (xRange>yRange?xRange:yRange)];
+    views[1].eye = [0, 0, (xRange>yRange?xRange:yRange) + (Math.abs(yMax + yMin))];
     views[1].camera.position.fromArray( views[1].eye );
 
-    views[2].eye = [-(xRange>yRange?xRange:yRange), 0, 0];
+    views[2].eye = [-(xRange>yRange?xRange:yRange) - (Math.abs(yMax + yMin)), 0, 0];
     views[2].camera.position.fromArray( views[2].eye );
 }
 
