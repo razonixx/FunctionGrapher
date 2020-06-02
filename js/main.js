@@ -23,7 +23,7 @@ var segments = 40;
 var isWireframe = false;
 var isBasicMaterial = false;
 
-var zFuncText = "sin(sqrt(x^2  + y^2))";
+var zFuncText = "sin(sqrt(x^2 + y^2))";
 var xRange, yRange, zFunc;
 
 
@@ -131,11 +131,16 @@ function main()
         graphFunc: function() { prepareGraph(); },
         autoFocus: function() { focus(); },
         Ex1: function() { 
-            zFuncText = "sin(x) * cos(y)"; 
+            zFuncText = "sin(sqrt(x^2 + y^2))"; 
             gui_zText.setValue(zFuncText);
             prepareGraph(); 
         },
         Ex2: function() { 
+            zFuncText = "sin(x) * cos(y)"; 
+            gui_zText.setValue(zFuncText);
+            prepareGraph(); 
+        },
+        Ex3: function() { 
             zFuncText = "1-abs(x+y)-abs(y-x)"; 
             gui_zText.setValue(zFuncText);
             prepareGraph(); 
@@ -179,8 +184,9 @@ function main()
     gui_Wireframe.onChange( function(value) { isWireframe = gui_Wireframe.getValue(); prepareGraph();});
 
     var gui_examples = gui.addFolder('Examples');
-    gui_Ex1 = gui_examples.add( parameters, 'Ex1' ).name('Ex1: sin(x)*cos(y)');
-    gui_Ex2 = gui_examples.add( parameters, 'Ex2' ).name('Ex2: Pyramid');
+    gui_Ex1 = gui_examples.add( parameters, 'Ex1' ).name('Example 1');
+    gui_Ex1 = gui_examples.add( parameters, 'Ex2' ).name('Example 2');
+    gui_Ex2 = gui_examples.add( parameters, 'Ex3' ).name('Example 3');
 
     gui.add( parameters, 'autoFocus').name("Auto Focus");
     gui.add( parameters, 'graphFunc' ).name("Graph Function");	
