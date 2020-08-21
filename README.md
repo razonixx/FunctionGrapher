@@ -1,3 +1,4 @@
+# Welcome
 # FunctionGrapher
 Graph equations in 3D using ThreeJS
 
